@@ -40,6 +40,11 @@ jobs:
 
       - name: run new container
         run: |
-          docker run -d -p 8080:8080 --name devops-backend-container ankitd002/devops-backend:latest
+          docker run -d \
+          -p 8080:8080 \
+          --env MONGODB_URL=${{ secrets.MONGODB_URL }} \
+          --env PORT=${{ secrets.PORT }} \
+          --name devops-backend-container \
+          ankitd002/devops-backend:latest
           
     
